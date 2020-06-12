@@ -3,15 +3,17 @@ import { Typography, makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles({
     titleStyle: {
-        fontSize: "30px"
+        fontSize: "50px",
+        marginTop: "30px"
     }
 })
 
 function Title() {
     const classes = useStyles()
     return (
-        <Typography className={classes.titleStyle}>
-            Material UI Todo List
+        
+        <Typography className={classes.titleStyle} align="center">
+            MateriaList
         </Typography>
     )
 }
