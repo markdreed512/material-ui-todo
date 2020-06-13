@@ -4,7 +4,7 @@ import { Typography, makeStyles } from '@material-ui/core'
 const useStyles = makeStyles({
     titleStyle: {
         fontSize: "50px",
-        marginTop: "30px"
+        padding: "30px"
     }
 })
 

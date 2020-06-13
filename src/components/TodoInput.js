@@ -1,11 +1,44 @@
 import React from 'react'
-import { TextField, Button } from '@material-ui/core'
+import { TextField, Button, makeStyles, Grid } from '@material-ui/core'
+
+const useStyles = makeStyles({
+    textFieldStyles: {
+        backgroundColor: "rgba(0,200,200,.2)",
+        width: "97%",
+        margin: "2px 5px"
+    },
+    buttonStyles: {
+        margin: "2px 5px",
+        padding: "15px 5px",
+        backgroundColor: "teal",
+        width: "97%"
+
+    }
+})
+
 function TodoInput() {
+    const classes = useStyles()
     return (
-        <form>
-            <TextField variant="outlined"/>
-            <Button>ADD</Button>
-        </form>
+
+        <Grid container alignItems="center">
+            <Grid item xs={3}></Grid>
+            <Grid item container xs={6}>
+                <Grid item  xs={12} md={10}>
+                    <TextField 
+                        label="Add Item"
+                        variant="outlined" 
+                        className={classes.textFieldStyles} />
+                </Grid>
+                <Grid item xs={12} md={2}>
+                    <Button className={classes.buttonStyles}>
+                            ADD
+                    </Button>
+                </Grid>
+            </Grid>
+            <Grid item xs={3}></Grid>
+
+        </Grid>
+
     )
 }
 
