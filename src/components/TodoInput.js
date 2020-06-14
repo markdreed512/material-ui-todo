@@ -10,7 +10,6 @@ const useStyles = makeStyles({
     buttonStyles: {
         margin: "2px 5px",
         padding: "15px 5px",
-        backgroundColor: "teal",
         width: "97%"
 
     }
@@ -30,7 +29,11 @@ function TodoInput() {
                         className={classes.textFieldStyles} />
                 </Grid>
                 <Grid item xs={12} md={2}>
-                    <Button className={classes.buttonStyles}>
+                    <Button 
+                        className={classes.buttonStyles}
+                        variant="contained"
+                        color="primary"
+                    >
                             ADD
                     </Button>
                 </Grid>
