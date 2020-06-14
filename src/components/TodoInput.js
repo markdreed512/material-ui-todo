@@ -17,6 +17,9 @@ const useStyles = makeStyles({
 
 function TodoInput() {
     const classes = useStyles()
+    const handleSubmitBtnClick = () => {
+        console.log("adding todo to state...")
+    }
     return (
 
         <Grid container alignItems="center">
@@ -30,6 +33,7 @@ function TodoInput() {
                 </Grid>
                 <Grid item xs={12} md={2}>
                     <Button 
+                        onClick={handleSubmitBtnClick}
                         className={classes.buttonStyles}
                         variant="contained"
                         color="primary"
