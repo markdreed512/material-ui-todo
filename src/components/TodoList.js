@@ -10,10 +10,8 @@ const useStyles = makeStyles({
 })
 
 function TodoList() {
-    const word = useContext(TodosContext)
-    console.log(word)
+    const [todos, setTodos] = useContext(TodosContext)
     const classes = useStyles()
-    let testItems = [{ text: "hi" }, { text: "dishes" }]
     const handleDelete = () => {
         console.log("deleting todo...")
     }
@@ -23,11 +21,11 @@ function TodoList() {
             <Grid item xs={6}>
                 <div className={classes.divStyles}>
 
-                    {testItems.map((todo,i) => {
+                    {todos.map((todo,i) => {
                             return <div key={i}>
                                 <Checkbox />
-                                <TextField value={word} />
-                                <Button onClick={handleDelete}>X</Button>
+                                <TextField value={todo.text} />
+                                <Button onClick={()=>setTodos([{id:3, text: "new"},{id:4, text: "new"}])}>X</Button>
                             </div>
                             })
                     }

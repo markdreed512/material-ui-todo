@@ -2,10 +2,10 @@ import React, { useContext } from 'react'
 import { TodosContext } from './TodosContext'
 
 function EditModal() {
-    const word = useContext(TodosContext)
+    const [todos, setTodos] = useContext(TodosContext)
     return (
         <div>
-            Modal's word is: {word}
+            Modal's word is: {todos[0].text}, { todos[1].text}
         </div>
     )
 }

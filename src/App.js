@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Title from './components/Title'
 import TodoInput from './components/TodoInput'
@@ -16,6 +16,7 @@ const useStyles = makeStyles({
 
 const App = () => {
   const classes = useStyles()
+  const [ todos, setTodos] = useState([{id: 1, text: "first todo"},{id: 2, text: "second todo"}])
   return (
 
     <Grid container>
@@ -25,7 +26,7 @@ const App = () => {
         <div id="main" className={classes.mainStyle}>
           <Title />
           <TodoInput />
-          <TodosContext.Provider value={"howdy"}>
+          <TodosContext.Provider value={[todos, setTodos]}>
             <TodoList />
             <EditModal />
           </TodosContext.Provider>
