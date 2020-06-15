@@ -4,8 +4,14 @@ import { Grid, TextField, Button, Checkbox, makeStyles } from '@material-ui/core
 
 const useStyles = makeStyles({
     divStyles: {
-        border: "1px solid black",
         marginTop: "10px"
+    },
+    textFieldStyles: {
+        borderBottom: "0px",
+        width: "100%"
+    },
+    inline: {
+        display: "inline-block"
     }
 })
 
@@ -13,24 +19,44 @@ function TodoList() {
     const [todos, setTodos] = useContext(TodosContext)
     const classes = useStyles()
     const handleDelete = () => {
-        setTodos()
+        console.log("deleting todo coming soon...")
+    }
+    const handleEdit = (e) => {
+        console.log(e.target.value)
+        let editedTodos = todos.map((todo)=>{
+            if(todo.id === parseInt(e.target.id)){
+                todo.text = e.target.value
+            }
+            return todo
+        })
+        setTodos(editedTodos)
+        
+    
     }
     return (
         <Grid container>
             <Grid item xs={3}></Grid>
             <Grid item xs={6}>
                 <div className={classes.divStyles}>
-
                     {todos.map((todo,i) => {
                             return <div key={i}>
-                                <Checkbox />
-                                <TextField value={todo.text} />
-                                <Button onClick={handleDelete}>X</Button>
+                                <Grid item container xs={1} className={classes.inline}>
+                                    <Checkbox />
+                                </Grid>
+                                <Grid item container xs={9} className={classes.inline}>
+                                    <TextField 
+                                        id={todo.id.toString()} 
+                                        value={todo.text} 
+                                        onChange={handleEdit} 
+                                        variant="filled" 
+                                        className={classes.textFieldStyles}/>
+                                </Grid>
+                                <Grid item container xs={2} className={classes.inline}>
+                                    <Button onClick={handleDelete}>X</Button>
+                                </Grid>
                             </div>
                             })
                     }
-                        
-                    
                 </div>
             </Grid>
             <Grid item xs={3}></Grid>
