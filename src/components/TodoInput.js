@@ -32,7 +32,7 @@ function TodoInput() {
         e.preventDefault()
         if (inputValue) {
             const date = new Date()
-            setTodos(todos.concat({ id: date.getTime(), text: inputValue }))
+            setTodos(todos.concat({ id: date.getTime(), text: inputValue, checked: false  }))
             setInputValue("")
         }
     }
@@ -40,7 +40,7 @@ function TodoInput() {
         if(e.keyCode === 13){
             if (inputValue) {
                 const dt = new Date()
-                setTodos(todos.concat({ id: dt.getTime(), text: inputValue }))
+                setTodos(todos.concat({ id: dt.getTime(), text: inputValue, checked: false }))
                 setInputValue("")
             }
         }

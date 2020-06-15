@@ -19,7 +19,6 @@ function TodoList() {
     const [todos, setTodos] = useContext(TodosContext)
     const classes = useStyles()
     const handleDelete = (e) => {
-        console.log(e.currentTarget.id)
         const editedTodos = todos.filter((todo)=>{
            return todo.id !== parseInt(e.currentTarget.id)
         })
@@ -33,8 +32,16 @@ function TodoList() {
             return todo
         })
         setTodos(editedTodos)
-        
-    
+
+    }
+    const handleCheck = (e) => {
+        let editedTodos = todos.map((todo)=>{
+            if(todo.id === parseInt(e.target.id)){
+                todo.checked = !todo.checked
+            }
+            return todo
+        })
+        setTodos(editedTodos)
     }
     return (
         <Grid container>
@@ -42,9 +49,14 @@ function TodoList() {
             <Grid item xs={6}>
                 <div className={classes.divStyles}>
                     {todos.map((todo,i) => {
+                        console.log(typeof todo.checked)
                             return <div key={i}>
                                 <Grid item container xs={1} className={classes.inline}>
-                                    <Checkbox />
+                                    <Checkbox 
+                                        checked={todo.checked}
+                                        onChange={handleCheck}
+                                        id={todo.id.toString()} 
+                                    />
                                 </Grid>
                                 <Grid item container xs={9} className={classes.inline}>
                                     <TextField 
