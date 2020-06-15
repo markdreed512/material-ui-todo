@@ -51,7 +51,6 @@ function TodoInput() {
         <Grid container alignItems="center">
             <Grid item xs={3}></Grid>
             <Grid container item xs={6} className={classes.gridStyles}>
-                {/* <form onSubmit={submit} className={classes.formStyles}> */}
                     <Grid item xs={12} md={9} >
                         <TextField
                             onKeyDown={handleKeyDown}
@@ -71,8 +70,6 @@ function TodoInput() {
                             ADD
                     </Button>
                     </Grid>
-                {/* </form> */}
-
             </Grid>
             <Grid item xs={3}></Grid>
 

@@ -18,11 +18,14 @@ const useStyles = makeStyles({
 function TodoList() {
     const [todos, setTodos] = useContext(TodosContext)
     const classes = useStyles()
-    const handleDelete = () => {
-        console.log("deleting todo coming soon...")
+    const handleDelete = (e) => {
+        console.log(e.currentTarget.id)
+        const editedTodos = todos.filter((todo)=>{
+           return todo.id !== parseInt(e.currentTarget.id)
+        })
+        setTodos(editedTodos)
     }
     const handleEdit = (e) => {
-        console.log(e.target.value)
         let editedTodos = todos.map((todo)=>{
             if(todo.id === parseInt(e.target.id)){
                 todo.text = e.target.value
@@ -52,7 +55,9 @@ function TodoList() {
                                         className={classes.textFieldStyles}/>
                                 </Grid>
                                 <Grid item container xs={2} className={classes.inline}>
-                                    <Button onClick={handleDelete}>X</Button>
+                                    <Button 
+                                        onClick={handleDelete}
+                                        id={todo.id.toString()}>X</Button>
                                 </Grid>
                             </div>
                             })
