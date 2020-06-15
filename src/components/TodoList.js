@@ -13,7 +13,7 @@ function TodoList() {
     const [todos, setTodos] = useContext(TodosContext)
     const classes = useStyles()
     const handleDelete = () => {
-        console.log("deleting todo...")
+        setTodos()
     }
     return (
         <Grid container>
@@ -25,7 +25,7 @@ function TodoList() {
                             return <div key={i}>
                                 <Checkbox />
                                 <TextField value={todo.text} />
-                                <Button onClick={()=>setTodos([{id:3, text: "new"},{id:4, text: "new"}])}>X</Button>
+                                <Button onClick={handleDelete}>X</Button>
                             </div>
                             })
                     }

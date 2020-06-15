@@ -1,13 +1,5 @@
-import React, { createContext, useState} from 'react'
+import { createContext } from 'react'
 
 export const TodosContext = createContext(null)
 
-function TodosProvider() {
-    return (
-        <div>
-            
-        </div>
-    )
-}
 
-export default TodosProvider

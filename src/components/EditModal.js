@@ -5,7 +5,7 @@ function EditModal() {
     const [todos, setTodos] = useContext(TodosContext)
     return (
         <div>
-            Modal's word is: {todos[0].text}, { todos[1].text}
+            Modal
         </div>
     )
 }

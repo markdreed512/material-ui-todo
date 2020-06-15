@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import './App.css';
+import React, { useState } from 'react'
+import './App.css'
 import Title from './components/Title'
 import TodoInput from './components/TodoInput'
 import TodoList from './components/TodoList'
-import EditModal from './components/EditModal'
+import { TodosContext } from './components/TodosContext'
 import { makeStyles, Grid } from '@material-ui/core'
 import bgImage from './images/paven.png'
-import { TodosContext } from './components/TodosContext'
 const useStyles = makeStyles({
   mainStyle: {
     backgroundImage: `url(${bgImage})`,
-    height: "100vh"
+    height: "100vh",
+    width: "100%"
   }
 })
 
 const App = () => {
   const classes = useStyles()
-  const [ todos, setTodos] = useState([{id: 1, text: "first todo"},{id: 2, text: "second todo"}])
+  const [ todos, setTodos] = useState([])
   return (
 
     <Grid container>
@@ -25,10 +25,9 @@ const App = () => {
       <Grid item xs={12} md={8}>
         <div id="main" className={classes.mainStyle}>
           <Title />
-          <TodoInput />
           <TodosContext.Provider value={[todos, setTodos]}>
+            <TodoInput />
             <TodoList />
-            <EditModal />
           </TodosContext.Provider>
 
         </div>
