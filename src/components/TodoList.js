@@ -10,8 +10,14 @@ const useStyles = makeStyles({
         borderBottom: "0px",
         width: "100%"
     },
+    strikeThrough: {
+        textDecoration: "line-through"
+    },
     inline: {
         display: "inline-block"
+    },
+    red: {
+        color: "red"
     }
 })
 
@@ -49,7 +55,6 @@ function TodoList() {
             <Grid item xs={6}>
                 <div className={classes.divStyles}>
                     {todos.map((todo,i) => {
-                        console.log(typeof todo.checked)
                             return <div key={i}>
                                 <Grid item container xs={1} className={classes.inline}>
                                     <Checkbox 
@@ -59,12 +64,23 @@ function TodoList() {
                                     />
                                 </Grid>
                                 <Grid item container xs={9} className={classes.inline}>
-                                    <TextField 
-                                        id={todo.id.toString()} 
-                                        value={todo.text} 
-                                        onChange={handleEdit} 
-                                        variant="filled" 
-                                        className={classes.textFieldStyles}/>
+                                    {todo.checked? 
+                                        <TextField 
+                                            id={todo.id.toString()} 
+                                            value={todo.text} 
+                                            onChange={handleEdit} 
+                                            variant="filled" 
+                                            className={`${classes.textFieldStyles} ${classes.strikeThrough}`}
+                                            />
+                                        : <TextField 
+                                            id={todo.id.toString()} 
+                                            value={todo.text} 
+                                            onChange={handleEdit} 
+                                            variant="filled" 
+                                            className={classes.textFieldStyles}
+                                            />
+                                    }
+                                    
                                 </Grid>
                                 <Grid item container xs={2} className={classes.inline}>
                                     <Button 

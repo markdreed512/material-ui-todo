@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { TodosContext } from './TodosContext'
 import { TextField, Button, makeStyles, Grid } from '@material-ui/core'
 
@@ -22,7 +22,10 @@ const useStyles = makeStyles({
 })
 
 function TodoInput() {
-    const [todos, setTodos] = useContext(TodosContext)
+    const [ todos, setTodos ] = useContext(TodosContext)
+    useEffect(()=>{
+        localStorage.setItem("todos2", JSON.stringify(todos))
+    }, [ todos ])
     const [inputValue, setInputValue] = useState("")
     const classes = useStyles()
     const handleChange = (e) => {

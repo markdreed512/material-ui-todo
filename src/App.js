@@ -16,12 +16,12 @@ const useStyles = makeStyles({
 
 const App = () => {
   const classes = useStyles()
-  const [ todos, setTodos] = useState([])
-  return (
+  const parsedLocalStorage = JSON.parse(localStorage.getItem("todos2")) 
+  const [ todos, setTodos ] = useState(parsedLocalStorage || [])
 
+  return (
     <Grid container>
       <Grid id="left-alley" item xs={false} md={2}></Grid>
-
       <Grid item xs={12} md={8}>
         <div id="main" className={classes.mainStyle}>
           <Title />
@@ -29,12 +29,10 @@ const App = () => {
             <TodoInput />
             <TodoList />
           </TodosContext.Provider>
-
         </div>
       </Grid>
       <Grid id="right-alley" item xs={false} md={2}></Grid>
     </Grid>
-
   );
 }
 
