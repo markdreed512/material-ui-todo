@@ -5,13 +5,14 @@ import { TextField, Button, makeStyles, Grid } from '@material-ui/core'
 const useStyles = makeStyles({
     textFieldStyles: {
         backgroundColor: "rgba(0,200,200,.2)",
-        width: "97%",
+        width: "100%",
         margin: "2px 5px"
     },
     buttonStyles: {
-        margin: "2px 5px",
+        marginLeft: "20px",
         padding: "15px 5px",
-        width: "97%"
+        height: "60px",
+        width: "100%"
 
     },
 
@@ -54,16 +55,18 @@ function TodoInput() {
         <Grid container alignItems="center">
             <Grid item xs={3}></Grid>
             <Grid container item xs={6} className={classes.gridStyles}>
-                    <Grid item xs={12} md={9} >
+                    <Grid item xs={12} md={10} >
                         <TextField
                             onKeyDown={handleKeyDown}
                             label="Add Item"
                             variant="outlined"
                             className={classes.textFieldStyles}
                             onChange={handleChange}
-                            value={inputValue} />
+                            value={inputValue} 
+                            inputProps={{style: {fontSize: 27, paddingBottom: 10}}}
+                        />
                     </Grid>
-                    <Grid item xs={12} md={3} >
+                    <Grid item xs={12} md={2} >
                         <Button
                             onClick={submit}
                             className={classes.buttonStyles}
